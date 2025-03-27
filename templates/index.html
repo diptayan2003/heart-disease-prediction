@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Heart Disease Prediction</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script defer src="https://unpkg.com/htmx.org@2.0.3"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+                <h2 class="text-2xl font-bold text-center text-rose-500 mb-4">Heart Disease Prediction</h2>
+                <form id="prediction-form" class="grid grid-cols-2 gap-4" method="post" action="/predict"
+                        hx-post="/predict" hx-target="#result" hx-swap="outerHTML">
+                        <label class="block">Age <input type="number" name="age" class="w-full p-2 border rounded"
+                                        required></label>
+                        <label class="block">Sex <select name="sex" class="w-full p-2 border rounded">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                </select></label>
+                        <label class="block">Chest Pain Type (0-3) <input type="number" name="cp" min="0" max="3"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">Resting Blood Pressure <input type="number" name="trestbps"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">Cholesterol Level <input type="number" name="chol"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">Fasting Blood Sugar <select name="fbs" class="w-full p-2 border rounded">
+                                        <option value="≤120 mg/dL">≤120 mg/dL</option>
+                                        <option value=">120 mg/dL">>120 mg/dL</option>
+                                </select></label>
+                        <label class="block">Resting ECG (0-2) <input type="number" name="restecg" min="0" max="2"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">Max Heart Rate <input type="number" name="thalach"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">Exercise-Induced Angina <select name="exang"
+                                        class="w-full p-2 border rounded">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                </select></label>
+                        <label class="block">ST Depression <input type="number" name="oldpeak" step="0.1"
+                                        class="w-full p-2 border rounded" required></label>
+                        <label class="block">ST Slope <select name="slope" class="w-full p-2 border rounded">
+                                        <option value="Upsloping">Upsloping</option>
+                                        <option value="Flat">Flat</option>
+                                        <option value="Downsloping">Downsloping</option>
+                                </select></label>
+                        <label class="block">Number of Major Vessels (0-3) <input type="number" name="ca" min="0"
+                                        max="3" class="w-full p-2 border rounded" required></label>
+                        <label class="block">Thallium Stress Test <select name="thal" class="w-full p-2 border rounded">
+                                        <option value="Normal">Normal</option>
+                                        <option value="Fixed Defect">Fixed Defect</option>
+                                        <option value="Reversible Defect">Reversible Defect</option>
+                                </select></label>
+                        <button type="submit"
+                                class="col-span-2 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Predict</button>
+                </form>
+
+                <p id="result" class="text-center text-green-600 text-lg font-semibold text-gray-700 mt-4"></p>
+        </div>
+</body>
+
+</html>

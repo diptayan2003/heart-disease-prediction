@@ -1,0 +1,4 @@
+venv
+
+# Not adding this for less trouble in training.
+# .model.pkl
